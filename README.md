@@ -1,1 +1,1 @@
-# Anchoring-the-Unknown-Open-Set-Model-Attribution-via-Proxy-Anchor-Learning
+# Anchoring the Unknown: Open-Set Model Attribution via Proxy-Anchor Learning

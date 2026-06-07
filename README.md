@@ -1,12 +1,28 @@
 # PANDA: Proxy-Anchor Deepfake Attribution
 
-This repository hosts the official source code and data protocols for our EUSIPCO 2026 submission:
+This repository hosts the official source code and data protocols for our EUSIPCO 2026 paper:
 > Cristian-Teodor Neamtu, Serban Mihalache, Stefan Smeu, Dan Oneata, Horia Cucu, Dragos Burileanu, "Anchoring the Unknown: Open-Set Model Attribution via Proxy-Anchor Learning", accepted at EUSIPCO 2026, Bruges, Belgium.
 
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red)]()
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.12-green)](https://www.python.org/)
 
-## Overview
+## Abstract
 
-We address **open-set TTS source tracing**: given a speech sample, identify which TTS architecture generated it, and detect samples from architectures unseen during training (OOD detection). The system trains a proxy-anchor metric learning network on top of pre-extracted SSL embeddings from the [MLAAD v9](https://huggingface.co/datasets/mueller91/MLAAD) dataset (140 TTS systems, 51 languages). OOD detection is calibrated on a held-out set of unseen systems targeting 95% recall.
+The proliferation of text-to-speech (TTS) systems capable of generating realistic synthetic speech poses growing challenges for audio forensics. While binary deepfake detection has received considerable attention, source tracing (i.e., identifying which TTS system produced a given audio sample) remains underexplored, particularly in open-set scenarios where unknown systems may be encountered. We propose a metric learning framework based on the Proxy-Anchor loss function that operates on Wav2Vec2-BERT embeddings to learn a discriminative embedding space for TTS source attribution and out-of-distribution (OOD) detection of unseen systems. We evaluate it on the MLAAD v9 dataset spanning 140 TTS systems across 51 languages, and introduce an architecture merging strategy that groups TTS system versions into unified classes, reducing inter-class confusion. Our system achieves 99.76\% accuracy on 110 in-distribution classes and a False Positive Rate (FPR@95) as low as 2.04\% for OOD detection. Also, for a fair comparison against the current state of the art, we further evaluate it on the MLAAD v5 official dataset splits, improving the OOD accuracy by almost doubling it. These results demonstrate that Proxy-Anchor metric learning, combined with architecture-aware class design and post-hoc OOD scoring, provides an effective framework for forensic TTS source tracing in both closed-set and open-set settings.
+
+## Citation
+
+```bibtex
+@inproceedings{neamtu2026panda,
+  title     = {Anchoring the Unknown: Open-Set Model Attribution via Proxy-Anchor Learning},
+  author    = {Neamtu, Cristian-Teodor and Mihalache, Serban and Smeu, Stefan and Oneata, Dan and Cucu, Horia and Burileanu, Dragos},
+  booktitle = {Proceedings of the European Signal Processing Conference (EUSIPCO)},
+  year      = {2026},
+  address   = {Bruges, Belgium},
+  note      = {To appear}
+}
+```
 
 ## Setup
 
@@ -16,7 +32,7 @@ pip install -r requirements.txt
 
 ## Data
 
-Download MLAAD v9 and extract SSL embeddings using `src/extract_ssl_embeddings.py`. The script supports any HuggingFace SSL model via `--model_name`.
+Download [MLAAD v9](https://huggingface.co/datasets/mueller91/MLAAD) and extract SSL embeddings using `src/extract_ssl_embeddings.py`. The script supports any HuggingFace SSL model via `--model_name`.
 
 ```bash
 # Wav2Vec2-BERT (used in the paper)
@@ -34,7 +50,7 @@ python src/extract_ssl_embeddings.py \
     --layer 4
 ```
 
-Input structure: `{input_dir}/{language}/{model_name}/{audio}.wav`
+Input structure: `{input_dir}/{language}/{model_name}/{audio}.wav`  
 Output structure: `{output_dir}/{language}/{model_name}/{audio}.pt`
 
 ## Reproducing the Paper Experiments
@@ -85,6 +101,37 @@ python src/evaluate_baselines.py --metadata_dir metadata/merged     --output_dir
 ## Architecture Merging
 
 `configs/merge_map.json` groups model variants sharing the same underlying architecture (e.g., Llasa-1B/3B/8B → "Llasa"). When `--merge_map` is provided, the train/test split operates at the architecture level so no architecture spans the ID and OOD sets. Models not listed in the map keep their original name.
+
+## Results
+
+All results use **Wav2Vec2-BERT** (layer 4) embeddings and are reported on the held-out test set.
+OOD detection thresholds are calibrated on a separate OOD calibration split at 95% TPR.
+
+### Experiment 1 — Non-merged (120 ID classes)
+
+| Method | Accuracy ↑ | AUROC ↑ | FPR@95 ↓ |
+|:-------|----------:|--------:|---------:|
+| k-NN (k=21, cosine) | 92.58% | 0.8211 | 0.5463 |
+| Logistic Regression | 98.16% | 0.9702 | 0.1373 |
+| **Proxy-Anchor (Ours)** | **98.23%** | **0.9798** | **0.0959** |
+
+### Experiment 2 — Merged architectures (110 ID classes)
+
+| Method | Accuracy ↑ | AUROC ↑ | FPR@95 ↓ |
+|:-------|----------:|--------:|---------:|
+| k-NN (k=21, cosine) | 95.15% | 0.7848 | 0.6690 |
+| Logistic Regression | 99.59% | 0.9713 | 0.1651 |
+| **Proxy-Anchor (Ours)** | **99.76%** | **0.9935** | **0.0204** |
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+ 
+**Cristian-Teodor Neamtu** — cristian.neamtu [at] upb [dot] ro  
+For questions about the code, please open an [issue](../../issues). 
+For questions about the paper, feel free to reach out by email.
 
 ## Acknowledgements
 

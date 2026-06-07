@@ -35,8 +35,6 @@ class ProjectionNetwork(nn.Module):
 
         layers.append(nn.Linear(prev_dim, embedding_dim))
         self.projection = nn.Sequential(*layers)
-
-        # classifier head used for energy/logit-based OOD scoring
         self.classifier = nn.Linear(embedding_dim, num_classes, bias=False)
 
     def forward(self, x, return_embeddings=False):

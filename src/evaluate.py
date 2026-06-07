@@ -85,7 +85,6 @@ def evaluate_ood(
 ):
     model.eval()
 
-    # backward compat: single float = energy only
     if isinstance(thresholds, (int, float)):
         thresholds = {"energy": float(thresholds)}
 

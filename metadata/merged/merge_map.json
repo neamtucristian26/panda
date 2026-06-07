@@ -1,0 +1,18 @@
+{
+  "Llasa-1B": "Llasa",
+  "Llasa-3B": "Llasa",
+  "Llasa-8B": "Llasa",
+  "Llasa-1B-Multilingual": "Llasa",
+  "Microsoft VibeVoice 1.5B": "Microsoft VibeVoice",
+  "Microsoft VibeVoice Large": "Microsoft VibeVoice",
+  "parler_tts_large_v1": "Parler TTS",
+  "parler_tts_mini_v0.1": "Parler TTS",
+  "parler_tts_mini_v1": "Parler TTS",
+  "suno_bark": "Bark",
+  "suno_bark-small": "Bark",
+  "tts_models_multilingual_multi-dataset_bark": "Bark",
+  "tts_models_en_ljspeech_vits": "en_vits-ljspeech",
+  "tts_models_en_ljspeech_vits--neon": "en_vits-ljspeech",
+  "minimax_speech-02-turbo": "minimax",
+  "minimax_speech-2.6-hd": "minimax"
+}

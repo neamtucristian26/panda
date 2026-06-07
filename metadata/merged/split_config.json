@@ -1,0 +1,7 @@
+{
+  "train_ratio": 0.7,
+  "val_ratio": 0.15,
+  "test_ratio": 0.15,
+  "seed": 42,
+  "max_samples_per_model": 2000
+}

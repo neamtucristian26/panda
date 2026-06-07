@@ -1,0 +1,10 @@
+tts_models_de_thorsten_vits
+MatchaTTS
+kokoro
+Chatterbox
+parler_tts_large_v1
+facebook_mms-tts-hun
+Metavoice-1B
+WhisperSpeech
+Mars5
+FireRedTTS-2.0

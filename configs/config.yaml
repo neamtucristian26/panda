@@ -1,0 +1,59 @@
+# Configuration file for audio deepfake source tracing
+
+# Data parameters
+data:
+  embeddings_dir: "data/w2vbert_embeddings/layer4"
+  metadata_dir: "metadata"
+
+  # Model-level split
+  num_id_models: 120        # Total ID models to use
+  num_ood_cal_models: 10    # OOD models for calibration
+  num_ood_test_models: 10   # OOD models for test
+
+  # Sample-level split (within ID models)
+  id_train_sample_ratio: 0.70   # 70% of samples per ID model -> train
+  id_val_sample_ratio: 0.15     # 15% of samples per ID model -> val
+  id_test_sample_ratio: 0.15    # 15% of samples per ID model -> test
+
+# Model architecture
+model:
+  input_dim: 1024
+  hidden_dims: []
+  embedding_dim: 1024
+  dropout: 0.3
+  temperature: 0.1  # Temperature for logit scaling
+
+# Loss parameters
+loss:
+  margin: 0.1  # Proxy-anchor loss margin (delta)
+  alpha: 32.0  # Proxy-anchor loss scaling factor
+
+# Training parameters
+training:
+  batch_size: 256
+  epochs: 100
+  lr: 0.001
+  weight_decay: 0.0001
+  num_workers: 5
+  seed: 42
+
+# Checkpoint and logging
+checkpointing:
+  checkpoint_dir: "checkpoints"
+  log_dir: "logs"
+  save_freq: 10  # Save checkpoint every N epochs
+
+# OOD detection
+ood:
+  target_recall: 0.95  # Target recall for OOD threshold calibration
+
+# Evaluation
+evaluation:
+  output_dir: "evaluation_results"
+  checkpoint_file: "best_model.pth"
+  batch_size: 256
+  num_workers: 5
+
+# Inference
+inference:
+  top_k: 5  # Number of top predictions to return

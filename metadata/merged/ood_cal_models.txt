@@ -1,0 +1,10 @@
+MiniCPM-o-2.6
+Metavoice-1B
+tts_models_multilingual_multi-dataset_xtts_v2
+Cartesia.ai (Sonic-3)
+Chatterbox
+YarnGPT
+sesame_csm
+Index-TTS-1.5
+griffin_lim
+tts_models_lv_cv_vits

@@ -1,0 +1,6 @@
+{
+  "split_type": "sample_level_id",
+  "num_id_models": 120,
+  "num_ood_cal_models": 10,
+  "num_ood_test_models": 10
+}

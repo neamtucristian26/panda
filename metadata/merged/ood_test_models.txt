@@ -1,0 +1,11 @@
+tts_models_sv_cv_vits
+tts_models_en_blizzard2013_capacitron-t2-c50
+IndicF5
+tts_models_en_ljspeech_tacotron2-DCA
+Kitten-TTS-Nano-0.1
+zonosTTS-v0.1
+Nari Dia-1.6B
+kokoro
+DeepGram
+Microsoft VibeVoice 1.5B
+Microsoft VibeVoice Large

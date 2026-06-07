@@ -1,0 +1,10 @@
+FishTTS
+tts_models_es_css10_vits
+Llasa-8B
+Maya1 TTS
+Nari Dia2
+ZipVoice
+facebook_mms-tts-fin
+griffin_lim
+Edge-TTS
+MeloTTS

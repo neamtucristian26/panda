@@ -3,7 +3,7 @@
 This repository hosts the official source code and data protocols for our EUSIPCO 2026 paper:
 > Cristian-Teodor Neamtu, Serban Mihalache, Stefan Smeu, Dan Oneata, Horia Cucu, Dragos Burileanu, "Anchoring the Unknown: Open-Set Model Attribution via Proxy-Anchor Learning", accepted at EUSIPCO 2026, Bruges, Belgium.
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-red)]()
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2606.10758)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12-green)](https://www.python.org/)
 

@@ -14,13 +14,14 @@ The proliferation of text-to-speech (TTS) systems capable of generating realisti
 ## Citation
 
 ```bibtex
-@inproceedings{neamtu2026panda,
-  title     = {Anchoring the Unknown: Open-Set Model Attribution via Proxy-Anchor Learning},
-  author    = {Neamtu, Cristian-Teodor and Mihalache, Serban and Smeu, Stefan and Oneata, Dan and Cucu, Horia and Burileanu, Dragos},
-  booktitle = {Proceedings of the European Signal Processing Conference (EUSIPCO)},
-  year      = {2026},
-  address   = {Bruges, Belgium},
-  note      = {To appear}
+@misc{neamtu2026anchoringunknownopensetmodel,
+      title={Anchoring the Unknown: Open-Set Model Attribution via Proxy-Anchor Learning}, 
+      author={Cristian-Teodor Neamtu and Serban Mihalache and Stefan Smeu and Dan Oneata and Horia Cucu and Dragos Burileanu},
+      year={2026},
+      eprint={2606.10758},
+      archivePrefix={arXiv},
+      primaryClass={eess.AS},
+      url={https://arxiv.org/abs/2606.10758}, 
 }
 ```
 
